@@ -1,6 +1,11 @@
 name: Live Paper Trading
 
 on:
+  push:
+    branches: [live-paper-trading]
+    paths-ignore:
+      - "state/**"
+      - "reports/**"
   workflow_dispatch:
   schedule:
     # Best-effort UTC schedule; market data availability is not guaranteed.
