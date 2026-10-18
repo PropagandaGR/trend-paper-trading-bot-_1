@@ -18,12 +18,12 @@
   "recent_trades": [],
   "return_pct": 0.0,
   "starting_cash": 15.0,
-  "status": "initialized_no_trade",
+  "status": "updated",
   "symbols": [
     "BTCUSDT",
     "ETHUSDT",
     "SOLUSDT"
   ],
   "trade_count": 0,
-  "updated_at": "2026-10-18T17:36:26.711192+00:00"
+  "updated_at": "2026-10-18T17:38:48.007427+00:00"
 }
