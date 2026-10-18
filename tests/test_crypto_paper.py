@@ -40,4 +40,18 @@ class CryptoPaperTests(unittest.TestCase):
         self.assertEqual(pos.iloc[0],0)
         self.assertLessEqual(float(costly.sum()),float(gross.sum())+1e-9)
 
+
+    def test_rsi_nan_does_not_disable_trend_or_breakout(self):
+        row=pd.Series({"Close":105.0,"ema_fast":104.0,"ema_slow":103.0,"mom_3":0.01,"rsi":float("nan"),"range_high":104.0,"range_low":100.0,"volume_ratio":1.5,"atr_pct":0.01})
+        self.assertTrue(bot.strategy_signal(row,"trend"))
+        self.assertTrue(bot.strategy_signal(row,"breakout"))
+        self.assertFalse(bot.strategy_signal(row,"mean_reversion"))
+
+    def test_mean_reversion_has_its_own_exit(self):
+        position={"strategy":"mean_reversion"}
+        row=pd.Series({"Close":101.0,"ema_fast":100.0,"ema_slow":99.0,"mom_3":0.01,"rsi":52.0})
+        should_exit,reason=bot.should_exit(position,row)
+        self.assertTrue(should_exit)
+        self.assertEqual(reason,"mean_reversion_rsi_normalized")
+
 if __name__=="__main__": unittest.main()
