@@ -211,7 +211,7 @@ def run_once(state_path: Path = STATE_PATH, report_path: Path = REPORT_PATH) -> 
         # First process the existing position's exit, independent of symbol
         # iteration order. Then evaluate entries across all symbols if flat.
         held_symbol = state.position.get("symbol") if state.position else None
-        if held_symbol in events:
+        if held_symbol and held_symbol in events[ts]:
             df = data[held_symbol]
             loc = int(df.index.get_loc(ts))
             if loc > 0:
