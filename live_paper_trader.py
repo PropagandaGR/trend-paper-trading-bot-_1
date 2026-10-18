@@ -52,7 +52,9 @@ def fetch_bars(symbol: str) -> pd.DataFrame:
         "Open":"first", "High":"max", "Low":"min", "Close":"last", "Volume":"sum"
     }).dropna()
     now = pd.Timestamp.now(tz=bars.index.tz) if bars.index.tz else pd.Timestamp.now()
-    return bars[bars.index <= now.floor("5min")]
+    # Exclude the currently forming 5-minute bucket, even at an exact boundary.
+    last_completed_end = now.floor("5min") - pd.Timedelta(minutes=5)
+    return bars[bars.index <= last_completed_end]
 
 def add_indicators(bars: pd.DataFrame) -> pd.DataFrame:
     x = bars.copy()
@@ -137,7 +139,9 @@ def process_once(state_path: Path = STATE_PATH, report_path: Path = REPORT_PATH)
         save_json(state_path, asdict(state)); save_json(report_path, report); return report
     try: last = pd.Timestamp(state.last_processed_bar)
     except Exception: last = latest
-    timeline = sorted(t for t in bars_union if t > last)
+    # Do not replay every missed bar as if we had traded it live. Process only the
+    # newest newly available completed bar; skipped intervals remain skipped.
+    timeline = [max(t for t in bars_union if t > last)] if any(t > last for t in bars_union) else []
     # Signal uses the prior completed bar; approximate fill uses the next bar open.
     for ts in timeline:
         candidates = []
