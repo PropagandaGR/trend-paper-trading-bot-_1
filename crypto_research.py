@@ -68,6 +68,10 @@ def simulate(df: pd.DataFrame, signals: pd.Series, cost_bps: float) -> tuple[pd.
     changes = held.diff().abs().fillna(held.abs())
     return held * price_ret - changes * (cost_bps / 10000), held
 
+def backtest(df: pd.DataFrame, strategy: str, cost_bps: float) -> tuple[pd.Series, pd.Series]:
+    """Compatibility wrapper: run one fixed strategy with costs and next-bar execution."""
+    return simulate(df, position_series(df, strategy), cost_bps)
+
 def walk_forward_from_returns(net: pd.Series, held: pd.Series, train_days: int = 30, test_days: int = 7) -> dict[str, Any]:
     # Fixed rules are not fitted on training data; the initial window is warm-up only.
     train_n, test_n = train_days * 288, test_days * 288
