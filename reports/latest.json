@@ -1,0 +1,35 @@
+{
+  "cash": 15.0,
+  "cost_per_side_assumption": 0.001,
+  "data_errors": {},
+  "drawdown_from_peak_pct": 0.0,
+  "equity": 15.0,
+  "last_processed_bar": "2026-10-16T16:00:00-04:00",
+  "marks": {
+    "AAPL": 343.4700012207031,
+    "IWM": 270.4800109863281,
+    "MSFT": 528.9500122070312,
+    "NVDA": 214.13999938964844,
+    "QQQ": 709.9299926757812,
+    "SPY": 763.3099975585938
+  },
+  "mode": "paper_only",
+  "note": "Simulated prices/fills only; free data can be delayed/incomplete. No broker or real orders.",
+  "peak_equity": 15.0,
+  "pnl_dollars": 0.0,
+  "position": null,
+  "recent_trades": [],
+  "return_pct": 0.0,
+  "starting_cash": 15.0,
+  "status": "initialized_no_trade",
+  "symbols": [
+    "SPY",
+    "QQQ",
+    "IWM",
+    "AAPL",
+    "MSFT",
+    "NVDA"
+  ],
+  "trade_count": 0,
+  "updated_at": "2026-10-18T17:25:03.540905+00:00"
+}
