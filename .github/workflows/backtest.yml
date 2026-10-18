@@ -1,10 +1,12 @@
-name: Paper-trading backtest
+name: Paper-trading backtests
 
 on:
   push:
     branches: [main]
     paths:
       - "paper_trader.py"
+      - "improved_daily_trader.py"
+      - "rapid_paper_trader.py"
       - "requirements.txt"
       - ".github/workflows/backtest.yml"
   workflow_dispatch:
@@ -15,7 +17,7 @@ permissions:
 jobs:
   backtest:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -27,9 +29,13 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
       - name: Check Python syntax
-        run: python -m py_compile paper_trader.py
-      - name: Run historical paper backtest
+        run: python -m py_compile paper_trader.py improved_daily_trader.py rapid_paper_trader.py
+      - name: Run original daily baseline
         run: python paper_trader.py
+      - name: Run improved daily strategy
+        run: python improved_daily_trader.py
+      - name: Run rapid paper simulator
+        run: python rapid_paper_trader.py
       - name: Upload backtest reports
         if: always()
         uses: actions/upload-artifact@v4
