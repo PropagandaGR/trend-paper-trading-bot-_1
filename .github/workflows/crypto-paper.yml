@@ -1,4 +1,4 @@
-name: Crypto Paper Trading Research
+name: Crypto Paper Trading Live Monitor
 
 on:
   push:
@@ -8,8 +8,10 @@ on:
       - "reports/**"
   workflow_dispatch:
   schedule:
-    # Best-effort every 5 minutes; not a low-latency service.
+    # Live paper update every five minutes; GitHub scheduling is best-effort.
     - cron: "*/5 * * * *"
+    # Expensive historical research runs weekly, not on every market poll.
+    - cron: "0 3 * * 1"
 
 permissions:
   contents: write
@@ -19,9 +21,9 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  crypto-research-and-paper:
+  crypto-paper:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
       - name: Check out crypto branch
         uses: actions/checkout@v4
@@ -36,18 +38,47 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Run offline unit tests
         run: python -m unittest discover -s tests -v
-      - name: Run historical walk-forward and cost research
+      - name: Run historical research on manual or weekly run
+        if: github.event_name == 'workflow_dispatch' || github.event.schedule == '0 3 * * 1'
         run: python crypto_research.py --days 90
-      - name: Update paper portfolio from public spot data
+      - name: Update simulated portfolio from current public market data
         run: python crypto_paper_bot.py --once
-      - name: Commit reports and simulated state
+      - name: Publish one concise status report
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path("reports/crypto_latest.json")
+          summary = Path(os.environ["GITHUB_STEP_SUMMARY"])
+          if not p.exists():
+              summary.write_text("## Crypto paper status\n\n**Status:** No report was produced. Check the failed workflow step.\n")
+              raise SystemExit(0)
+          d = json.loads(p.read_text())
+          lines = [
+              "## Crypto paper status",
+              "",
+              f"- **Status:** {d.get('status', 'unknown')}",
+              f"- **Mode:** {d.get('mode', 'unknown')} — simulated only",
+              f"- **Equity:** {d.get('equity', 'n/a')} USDT",
+              f"- **P/L:** {d.get('pnl_usdt', 'n/a')} USDT ({d.get('return_pct', 'n/a')}%)",
+              f"- **Trades:** {d.get('trade_count', 'n/a')}",
+              f"- **Open position:** {json.dumps(d.get('position'))}",
+              f"- **Last processed candle:** {d.get('last_processed_bar', 'n/a')}",
+              f"- **Data errors:** {json.dumps(d.get('data_errors', {}))}",
+              "",
+              "No real orders, exchange credentials, leverage, or short positions are used."
+          ]
+          summary.write_text("\n".join(lines) + "\n")
+          PY
+      - name: Commit paper state and latest status
+        if: success() || failure()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add state/crypto_paper_state.json reports/crypto_latest.json reports/research_summary.json
           if ! git diff --cached --quiet; then
-            git commit -m "Update crypto paper research and portfolio"
-            # Another workflow run or code push may have advanced this branch.
+            git commit -m "Update crypto paper status"
             git pull --rebase origin crypto-paper-trading
             git push origin HEAD:crypto-paper-trading
           fi
