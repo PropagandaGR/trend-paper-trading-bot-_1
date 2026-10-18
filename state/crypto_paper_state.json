@@ -1,7 +1,24 @@
 {
-  "cash": 15.0,
-  "last_processed_bar": "2026-10-18T17:45:00+00:00",
+  "cash": 0.0,
+  "last_processed_bar": "2026-10-18T19:35:00+00:00",
   "peak_equity": 15.0,
-  "position": null,
-  "trades": []
+  "position": {
+    "entry_price": 2350.18784,
+    "entry_time": "2026-10-18T19:35:00+00:00",
+    "quantity": 0.006382468560470468,
+    "strategy": "mean_reversion",
+    "symbol": "ETHUSDT"
+  },
+  "trades": [
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 2350.18784,
+      "quantity": 0.006382468560470468,
+      "reference_price": 2347.84,
+      "side": "BUY",
+      "strategy": "mean_reversion",
+      "symbol": "ETHUSDT",
+      "time": "2026-10-18T19:35:00+00:00"
+    }
+  ]
 }

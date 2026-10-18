@@ -1,22 +1,39 @@
 {
-  "cash": 15.0,
+  "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": 0.0,
-  "equity": 15.0,
-  "last_processed_bar": "2026-10-18T17:45:00+00:00",
+  "drawdown_from_peak_pct": -0.49987,
+  "equity": 14.92501978,
+  "last_processed_bar": "2026-10-18T19:35:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 81108.51,
-    "ETHUSDT": 2367.72,
-    "SOLUSDT": 101.93
+    "BTCUSDT": 80906.14,
+    "ETHUSDT": 2338.44,
+    "SOLUSDT": 101.07
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.0,
-  "pnl_usdt": 0.0,
-  "position": null,
-  "recent_trades": [],
-  "return_pct": 0.0,
+  "pnl_usdt": -0.07498022,
+  "position": {
+    "entry_price": 2350.18784,
+    "entry_time": "2026-10-18T19:35:00+00:00",
+    "quantity": 0.006382468560470468,
+    "strategy": "mean_reversion",
+    "symbol": "ETHUSDT"
+  },
+  "recent_trades": [
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 2350.18784,
+      "quantity": 0.006382468560470468,
+      "reference_price": 2347.84,
+      "side": "BUY",
+      "strategy": "mean_reversion",
+      "symbol": "ETHUSDT",
+      "time": "2026-10-18T19:35:00+00:00"
+    }
+  ],
+  "return_pct": -0.49987,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -24,6 +41,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 0,
-  "updated_at": "2026-10-18T17:51:23.098175+00:00"
+  "trade_count": 1,
+  "updated_at": "2026-10-18T19:42:34.858278+00:00"
 }
