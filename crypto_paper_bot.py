@@ -208,33 +208,39 @@ def run_once(state_path: Path = STATE_PATH, report_path: Path = REPORT_PATH) -> 
                 events.setdefault(ts, []).append(sym)
 
     for ts in sorted(events):
-        candidates: list[tuple[float, str, str, float]] = []
-        for sym in events[ts]:
-            df = data[sym]
+        # First process the existing position's exit, independent of symbol
+        # iteration order. Then evaluate entries across all symbols if flat.
+        held_symbol = state.position.get("symbol") if state.position else None
+        if held_symbol in events:
+            df = data[held_symbol]
             loc = int(df.index.get_loc(ts))
-            if loc < 1:
-                state.last_processed_bars[sym] = ts.isoformat()
-                continue
-            prev, cur = df.iloc[loc - 1], df.iloc[loc]
-            price = float(cur["Open"])
-            if state.position and state.position.get("symbol") == sym:
+            if loc > 0:
+                prev, cur = df.iloc[loc - 1], df.iloc[loc]
                 exit_now, reason = should_exit(state.position, prev)
                 if exit_now:
-                    sell(state, price, ts.isoformat(), reason)
-            if not state.position:
+                    sell(state, float(cur["Open"]), ts.isoformat(), reason)
+
+        candidates: list[tuple[float, str, str, float]] = []
+        if not state.position:
+            for sym in events[ts]:
+                df = data[sym]
+                loc = int(df.index.get_loc(ts))
+                if loc < 1:
+                    continue
+                prev, cur = df.iloc[loc - 1], df.iloc[loc]
+                price = float(cur["Open"])
                 for strat in ["trend", "breakout", "mean_reversion"]:
                     if strategy_signal(prev, strat):
-                        if strat == "mean_reversion":
-                            score = float(30 - prev["rsi"]) / 1000
-                        else:
-                            score = float(prev["mom_3"])
+                        score = float(30 - prev["rsi"]) / 1000 if strat == "mean_reversion" else float(prev["mom_3"])
                         candidates.append((score, sym, strat, price))
-            state.last_processed_bars[sym] = ts.isoformat()
         # If several symbols have signals on the same timestamp, choose one
         # deterministically; the portfolio remains one-position, long/flat.
         if not state.position and candidates:
             _, sym, strat, price = max(candidates, key=lambda x: (x[0], x[1], x[2]))
             buy(state, sym, price, ts.isoformat(), strat)
+
+        for sym in events[ts]:
+            state.last_processed_bars[sym] = ts.isoformat()
 
     if state.last_processed_bars:
         state.last_processed_bar = max(pd.Timestamp(v) for v in state.last_processed_bars.values()).isoformat()
