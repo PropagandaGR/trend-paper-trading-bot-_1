@@ -47,5 +47,7 @@ jobs:
           git add state/crypto_paper_state.json reports/crypto_latest.json reports/research_summary.json
           if ! git diff --cached --quiet; then
             git commit -m "Update crypto paper research and portfolio"
+            # Another workflow run or code push may have advanced this branch.
+            git pull --rebase origin crypto-paper-trading
             git push origin HEAD:crypto-paper-trading
           fi
