@@ -54,4 +54,27 @@ class CryptoPaperTests(unittest.TestCase):
         self.assertTrue(should_exit)
         self.assertEqual(reason,"mean_reversion_rsi_normalized")
 
+
+    def test_run_once_processes_unseen_candles_per_symbol(self):
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)
+            idx=pd.date_range("2026-10-18T00:00:00Z",periods=50,freq="5min")
+            close=pd.Series([100.0+i*0.1 for i in range(50)],index=idx)
+            bars=pd.DataFrame({"Open":close,"High":close*1.002,"Low":close*0.998,"Close":close,"Volume":1000.0},index=idx)
+            cursor=idx[-4].isoformat()
+            state={"cash":15.0,"position":None,"last_processed_bar":cursor,"last_processed_bars":{s:cursor for s in bot.SYMBOLS},"trades":[],"peak_equity":15.0}
+            state_path=root/"state.json"
+            report_path=root/"report.json"
+            bot.save_json(state_path,state)
+            with patch.object(bot,"closed_bars",return_value=bars):
+                with patch.object(bot,"strategy_signal",return_value=False) as signal:
+                    report=bot.run_once(state_path,report_path)
+            self.assertEqual(signal.call_count,27)
+            saved=bot.load_state(state_path)
+            for symbol in bot.SYMBOLS:
+                self.assertEqual(saved.last_processed_bars[symbol],idx[-1].isoformat())
+            self.assertEqual(report["equity"],15.0)
+            self.assertEqual(report["trade_count"],0)
+
 if __name__=="__main__": unittest.main()
