@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-10-18T17:47:45.779135+00:00",
+  "created_at": "2026-10-18T17:49:33.137509+00:00",
   "data_interval": "5m",
   "history_days_requested": 90,
   "starting_cash_usdt": 15,
@@ -218,8 +218,8 @@
     },
     "ETHUSDT": {
       "bars": 25919,
-      "start": "2026-07-20T17:50:00+00:00",
-      "end": "2026-10-18T17:40:00+00:00",
+      "start": "2026-07-20T17:55:00+00:00",
+      "end": "2026-10-18T17:45:00+00:00",
       "strategies": {
         "trend": {
           "5_bps_per_side": {
@@ -233,9 +233,9 @@
             "walk_forward_30d_warmup_7d_test": {
               "windows": 9,
               "metrics": {
-                "return_pct": -71.8169,
+                "return_pct": -71.8157,
                 "max_drawdown_pct": -73.823,
-                "sharpe_annualized_5m_approx": -26.188,
+                "sharpe_annualized_5m_approx": -26.187,
                 "trade_changes": 2568,
                 "exposure_pct": 18.46
               }
@@ -252,9 +252,9 @@
             "walk_forward_30d_warmup_7d_test": {
               "windows": 9,
               "metrics": {
-                "return_pct": -92.1989,
+                "return_pct": -92.1986,
                 "max_drawdown_pct": -92.6961,
-                "sharpe_annualized_5m_approx": -50.051,
+                "sharpe_annualized_5m_approx": -50.05,
                 "trade_changes": 2568,
                 "exposure_pct": 18.46
               }
@@ -271,9 +271,9 @@
             "walk_forward_30d_warmup_7d_test": {
               "windows": 9,
               "metrics": {
-                "return_pct": -99.4035,
+                "return_pct": -99.4034,
                 "max_drawdown_pct": -99.4325,
-                "sharpe_annualized_5m_approx": -84.495,
+                "sharpe_annualized_5m_approx": -84.494,
                 "trade_changes": 2568,
                 "exposure_pct": 18.46
               }
@@ -342,11 +342,11 @@
         "mean_reversion": {
           "5_bps_per_side": {
             "full_history": {
-              "return_pct": -15.6743,
-              "max_drawdown_pct": -16.1381,
-              "sharpe_annualized_5m_approx": -5.437,
-              "trade_changes": 424,
-              "exposure_pct": 2.26
+              "return_pct": -15.5333,
+              "max_drawdown_pct": -16.0499,
+              "sharpe_annualized_5m_approx": -5.389,
+              "trade_changes": 422,
+              "exposure_pct": 2.25
             },
             "walk_forward_30d_warmup_7d_test": {
               "windows": 9,
@@ -361,11 +361,11 @@
           },
           "10_bps_per_side": {
             "full_history": {
-              "return_pct": -31.7945,
-              "max_drawdown_pct": -32.0679,
-              "sharpe_annualized_5m_approx": -11.805,
-              "trade_changes": 424,
-              "exposure_pct": 2.26
+              "return_pct": -31.6121,
+              "max_drawdown_pct": -31.8862,
+              "sharpe_annualized_5m_approx": -11.735,
+              "trade_changes": 422,
+              "exposure_pct": 2.25
             },
             "walk_forward_30d_warmup_7d_test": {
               "windows": 9,
@@ -380,11 +380,11 @@
           },
           "20_bps_per_side": {
             "full_history": {
-              "return_pct": -55.3934,
-              "max_drawdown_pct": -55.4386,
-              "sharpe_annualized_5m_approx": -21.896,
-              "trade_changes": 424,
-              "exposure_pct": 2.26
+              "return_pct": -55.1844,
+              "max_drawdown_pct": -55.2298,
+              "sharpe_annualized_5m_approx": -21.799,
+              "trade_changes": 422,
+              "exposure_pct": 2.25
             },
             "walk_forward_30d_warmup_7d_test": {
               "windows": 9,
@@ -401,23 +401,23 @@
       },
       "buy_hold": {
         "5_bps_per_side": {
-          "return_pct": 24.1348,
+          "return_pct": 23.9845,
           "max_drawdown_pct": -17.0461,
-          "sharpe_annualized_5m_approx": 2.094,
+          "sharpe_annualized_5m_approx": 2.084,
           "trade_changes": 1,
           "exposure_pct": 100.0
         },
         "10_bps_per_side": {
-          "return_pct": 24.0106,
+          "return_pct": 23.8604,
           "max_drawdown_pct": -17.0461,
-          "sharpe_annualized_5m_approx": 2.086,
+          "sharpe_annualized_5m_approx": 2.075,
           "trade_changes": 1,
           "exposure_pct": 100.0
         },
         "20_bps_per_side": {
-          "return_pct": 23.7624,
+          "return_pct": 23.6124,
           "max_drawdown_pct": -17.0461,
-          "sharpe_annualized_5m_approx": 2.068,
+          "sharpe_annualized_5m_approx": 2.058,
           "trade_changes": 1,
           "exposure_pct": 100.0
         }
@@ -425,8 +425,8 @@
     },
     "SOLUSDT": {
       "bars": 25919,
-      "start": "2026-07-20T17:50:00+00:00",
-      "end": "2026-10-18T17:40:00+00:00",
+      "start": "2026-07-20T17:55:00+00:00",
+      "end": "2026-10-18T17:45:00+00:00",
       "strategies": {
         "trend": {
           "5_bps_per_side": {
@@ -608,23 +608,23 @@
       },
       "buy_hold": {
         "5_bps_per_side": {
-          "return_pct": 31.2425,
+          "return_pct": 30.9853,
           "max_drawdown_pct": -18.9341,
-          "sharpe_annualized_5m_approx": 2.208,
+          "sharpe_annualized_5m_approx": 2.194,
           "trade_changes": 1,
           "exposure_pct": 100.0
         },
         "10_bps_per_side": {
-          "return_pct": 31.1112,
+          "return_pct": 30.8542,
           "max_drawdown_pct": -18.9341,
-          "sharpe_annualized_5m_approx": 2.2,
+          "sharpe_annualized_5m_approx": 2.186,
           "trade_changes": 1,
           "exposure_pct": 100.0
         },
         "20_bps_per_side": {
-          "return_pct": 30.8489,
+          "return_pct": 30.5921,
           "max_drawdown_pct": -18.9341,
-          "sharpe_annualized_5m_approx": 2.186,
+          "sharpe_annualized_5m_approx": 2.172,
           "trade_changes": 1,
           "exposure_pct": 100.0
         }
