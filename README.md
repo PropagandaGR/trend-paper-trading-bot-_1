@@ -1,40 +1,51 @@
-# Trend Paper Trading Bot
+# Crypto Fast-Trading Paper Lab
 
-A paper-trading project for experimenting with trading strategies using simulated money only.
+**Separate research track, paper-only.** Starting simulated capital: **$15 USDT**. Spot only; long/flat only; no leverage, no shorts, no broker connection, no private exchange keys, no real orders.
 
-## Safety and scope
+## What it does
 
-- Uses simulated funds for testing and learning.
-- Does not place real trades.
-- Does not connect to a brokerage account.
-- Do not store broker credentials, API keys, or other secrets in this repository.
+- Uses public Binance Spot market-data endpoints only; no API key is needed for public market data.
+- Tracks BTC/USDT, ETH/USDT, SOL/USDT.
+- Trades on completed 5-minute bars, targeting 5–30 minute holding periods.
+- Compares trend/momentum, range breakout and mean-reversion baselines.
+- Runs historical walk-forward evaluation and cost stress tests at 5, 10 and 20 basis points per side.
+- Saves a persistent simulated portfolio and JSON report.
+- GitHub Actions runs offline unit tests and historical research, and schedules paper updates every five minutes (best-effort; not a guaranteed clock).
 
-## Run in GitHub Codespaces
+## Important data/execution limits
 
-1. Open the [repository](https://github.com/PropagandaGR/trend-paper-trading-bot-_1).
-2. Select **Code → Codespaces → Create codespace on main**. If a Codespaces environment already exists, open it instead.
-3. Wait for setup to finish; the development container installs dependencies from `requirements.txt`.
-4. In the Codespaces terminal, run:
+Binance public market data is used only for research; the bot has no trading endpoint and never requests credentials. The historical downloader is rate-conscious but network/data availability can still fail. Historical candles are not order-book history, and a bar-open fill is only a simplified approximation. Costs are assumptions, not measured personal exchange fees or realized spreads.
 
-   ```bash
-   python -m py_compile paper_trader.py
-   python paper_trader.py
-   ```
+A five-minute bar strategy cannot prove one-second alpha. Even though crypto trades 24/7, the GitHub runner schedule may be delayed and is not a persistent low-latency process. Never treat a paper result as proof of future profit.
 
-5. Inspect the generated files under `results/`:
-   - `summary.json`: headline performance metrics and limitations.
-   - `equity_curve.csv`: daily simulated equity and returns.
-   - `trades.csv`: position-change dates.
+## Quick start
 
-If dependency installation fails, run `python -m pip install -r requirements.txt` and retry. The script needs internet access to download historical prices from Yahoo Finance.
+Python 3.11+:
 
-## Strategy and data
+```bash
+pip install -r requirements.txt
+python crypto_paper_bot.py --once
+python crypto_research.py --days 90
+python -m unittest discover -s tests -v
+```
 
-The initial script tests a long-only monthly trend/momentum strategy using historical ETF prices and compares it with VT. It uses simulated starting cash of $15 and estimated commission/slippage. Historical results are not predictions of future performance.
+Portfolio state: `state/crypto_paper_state.json`  
+Latest paper report: `reports/crypto_latest.json`  
+Historical comparison: `reports/research_summary.json`
 
-## Important limitations
+## Strategy comparison
 
-- This is a historical backtest, not a live trading system.
-- It places no real orders and has no broker integration.
-- Data availability, ETF selection, execution-price assumptions, market holidays, taxes, and fund costs can affect results.
-- Do not interpret a successful run or positive backtest as evidence of future profits.
+1. Trend/momentum: fast EMA above slow EMA, positive momentum and a volatility guard.
+2. Breakout: close above the prior rolling high, with a volume confirmation.
+3. Mean reversion: RSI-style oversold threshold with a trend guard.
+4. Buy-and-hold and cash/no-trade baselines.
+
+Walk-forward testing chooses parameters on earlier training data and evaluates on later untouched test windows. The stitched out-of-sample report is the primary result; in-sample winners are not promoted automatically. All strategies are compared under multiple cost assumptions. A result is interesting only if it persists across windows/assets and survives costs.
+
+## Public data references
+
+- [Binance market-data-only endpoints](https://github.com/binance/binance-spot-api-docs/blob/master/faqs/market_data_only.md)
+- [Binance Spot REST API](https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md)
+- [Binance WebSocket streams](https://github.com/binance/binance-spot-api-docs/blob/master/web-socket-streams.md)
+
+This is experimental research software, not financial advice. No real trading is implemented.
