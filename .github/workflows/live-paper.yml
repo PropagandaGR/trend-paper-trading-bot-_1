@@ -1,0 +1,44 @@
+name: Live Paper Trading
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Best-effort UTC schedule; market data availability is not guaranteed.
+    - cron: "*/5 * * * 1-5"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: live-paper-trading
+  cancel-in-progress: false
+
+jobs:
+  paper-trading:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Check out paper-trading branch
+        uses: actions/checkout@v4
+        with:
+          ref: live-paper-trading
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run offline unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Update simulated portfolio
+        run: python live_paper_trader.py --once
+      - name: Commit updated state and report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add state/paper_state.json reports/latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Update live paper trading state"
+            git push origin HEAD:live-paper-trading
+          fi
