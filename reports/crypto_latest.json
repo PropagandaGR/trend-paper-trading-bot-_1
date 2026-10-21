@@ -1,26 +1,20 @@
 {
-  "cash": 0.0,
+  "cash": 15.02235221,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -2.10268,
-  "equity": 15.0683742,
-  "last_processed_bar": "2026-10-20T22:20:00+00:00",
+  "drawdown_from_peak_pct": -2.40168,
+  "equity": 15.02235221,
+  "last_processed_bar": "2026-10-21T00:40:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 83104.0,
-    "ETHUSDT": 2462.46,
-    "SOLUSDT": 106.99
+    "BTCUSDT": 83139.06,
+    "ETHUSDT": 2454.71,
+    "SOLUSDT": 106.81
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": 0.0683742,
-  "position": {
-    "entry_price": 107.17706999999999,
-    "entry_time": "2026-10-20T22:20:00+00:00",
-    "quantity": 0.14083908965600841,
-    "strategy": "trend",
-    "symbol": "SOLUSDT"
-  },
+  "pnl_usdt": 0.02235221,
+  "position": null,
   "recent_trades": [
     {
       "cost_bps_per_side": 10.0,
@@ -119,9 +113,21 @@
       "strategy": "trend",
       "symbol": "SOLUSDT",
       "time": "2026-10-20T22:20:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 106.66323,
+      "quantity": 0.14083908965600841,
+      "realized_pnl": -0.07236875782884233,
+      "reason": "trend_momentum_or_rsi_exit",
+      "reference_price": 106.77,
+      "side": "SELL",
+      "strategy": "trend",
+      "symbol": "SOLUSDT",
+      "time": "2026-10-21T00:40:00+00:00"
     }
   ],
-  "return_pct": 0.45583,
+  "return_pct": 0.14901,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -129,6 +135,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 9,
-  "updated_at": "2026-10-20T22:26:54.778891+00:00"
+  "trade_count": 10,
+  "updated_at": "2026-10-21T00:49:55.762760+00:00"
 }
