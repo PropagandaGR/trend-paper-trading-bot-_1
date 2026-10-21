@@ -1,31 +1,27 @@
 {
-  "cash": 15.02235221,
+  "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -2.40168,
-  "equity": 15.02235221,
-  "last_processed_bar": "2026-10-21T10:25:00+00:00",
+  "drawdown_from_peak_pct": -2.0674,
+  "equity": 15.07380419,
+  "last_processed_bar": "2026-10-21T15:30:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 83308.0,
-    "ETHUSDT": 2450.01,
-    "SOLUSDT": 106.27
+    "BTCUSDT": 84595.82,
+    "ETHUSDT": 2514.33,
+    "SOLUSDT": 108.87
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": 0.02235221,
-  "position": null,
+  "pnl_usdt": 0.07380419,
+  "position": {
+    "entry_price": 108.49838999999999,
+    "entry_time": "2026-10-21T15:30:00+00:00",
+    "quantity": 0.13845691362765336,
+    "strategy": "trend",
+    "symbol": "SOLUSDT"
+  },
   "recent_trades": [
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 2350.18784,
-      "quantity": 0.006382468560470468,
-      "reference_price": 2347.84,
-      "side": "BUY",
-      "strategy": "mean_reversion",
-      "symbol": "ETHUSDT",
-      "time": "2026-10-18T19:35:00+00:00"
-    },
     {
       "cost_bps_per_side": 10.0,
       "fill_price": 2407.8996899999997,
@@ -125,9 +121,19 @@
       "strategy": "trend",
       "symbol": "SOLUSDT",
       "time": "2026-10-21T00:40:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 108.49838999999999,
+      "quantity": 0.13845691362765336,
+      "reference_price": 108.39,
+      "side": "BUY",
+      "strategy": "trend",
+      "symbol": "SOLUSDT",
+      "time": "2026-10-21T15:30:00+00:00"
     }
   ],
-  "return_pct": 0.14901,
+  "return_pct": 0.49203,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -135,6 +141,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 10,
-  "updated_at": "2026-10-21T10:33:40.140938+00:00"
+  "trade_count": 11,
+  "updated_at": "2026-10-21T15:36:18.181724+00:00"
 }
