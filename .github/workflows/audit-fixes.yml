@@ -1,0 +1,34 @@
+name: Crypto Audit Fixes
+
+on:
+  push:
+    branches: [audit-fixes]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit-fixes
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Run 45-day research without touching live paper state
+        run: python crypto_research.py --days 45 --output reports/audit_research_summary.json
+      - name: Publish audit result
+        if: always()
+        run: |
+          echo "## Crypto audit-fixes validation" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Unit tests and 45-day research run are tracked in the job steps above." >> "$GITHUB_STEP_SUMMARY"
+          echo "- This workflow does not place real orders or update the live paper portfolio." >> "$GITHUB_STEP_SUMMARY"

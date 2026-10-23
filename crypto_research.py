@@ -5,6 +5,7 @@ import argparse, json, math, time, urllib.parse, urllib.request
 from pathlib import Path
 from typing import Any
 import pandas as pd
+import crypto_paper_bot as paper_bot
 from crypto_paper_bot import SYMBOLS, indicators, strategy_signal
 
 BASE_URL = "https://data-api.binance.vision/api/v3/klines"
@@ -42,8 +43,29 @@ def download_history(symbol: str, days: int = 90) -> pd.DataFrame:
     return df[["Open", "High", "Low", "Close", "Volume"]].dropna().sort_index().iloc[:-1]
 
 def position_series(df: pd.DataFrame, strategy: str) -> pd.Series:
+    """Build a persistent long/flat position using strategy-specific exits.
+
+    Signals are evaluated on each completed candle. A held position remains
+    open until its strategy exit condition is met; it no longer toggles flat
+    merely because a fresh entry signal is absent.
+    """
     x = indicators(df)
-    return pd.Series([1.0 if strategy_signal(row, strategy) else 0.0 for _, row in x.iterrows()], index=x.index, dtype=float)
+    held = []
+    active = False
+    position = {"strategy": strategy}
+    for _, row in x.iterrows():
+        if active:
+            exit_now, _ = bot_should_exit(position, row)
+            if exit_now:
+                active = False
+        elif strategy_signal(row, strategy):
+            active = True
+        held.append(1.0 if active else 0.0)
+    return pd.Series(held, index=x.index, dtype=float)
+
+def bot_should_exit(position: dict[str, Any], row: pd.Series) -> tuple[bool, str]:
+    # Imported lazily through the existing bot module alias below.
+    return paper_bot.should_exit(position, row)
 
 def metrics(returns: pd.Series, positions: pd.Series) -> dict[str, Any]:
     r = returns.fillna(0.0)
@@ -89,7 +111,7 @@ def run(days: int = 90, out_path: Path = Path("reports/research_summary.json")) 
         "created_at": pd.Timestamp.now(tz="UTC").isoformat(), "data_interval": "5m",
         "history_days_requested": days, "starting_cash_usdt": 15, "cost_scenarios_bps_per_side": COSTS_BPS,
         "assets": {},
-        "methodology": "Signals are generated on completed candles and shifted one bar. The first 30 days are warm-up; the following periods are stitched 7-day chronological out-of-sample windows. Strategy rules are fixed, not optimized on the training window.",
+        "methodology": "Strategy entries/exits are evaluated on completed candles; positions persist until strategy-specific exits and are shifted one bar for execution. Returns are approximated close-to-close, while the live paper bot fills at the next bar open, so execution results are not perfectly identical. The first 30 days are warm-up; following periods are stitched 7-day chronological out-of-sample windows. Rules are fixed, not optimized on training data.",
         "limitations": [
             "Public candles are not historical order-book data; fills and slippage are approximated.",
             "Results on limited history are exploratory, not proof of a durable edge.",

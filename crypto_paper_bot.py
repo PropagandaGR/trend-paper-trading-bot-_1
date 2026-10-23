@@ -21,6 +21,7 @@ class PaperState:
     cash: float = STARTING_CASH
     position: dict[str, Any] | None = None
     last_processed_bar: str | None = None
+    last_processed_bars: dict[str, str] = field(default_factory=dict)
     trades: list[dict[str, Any]] = field(default_factory=list)
     peak_equity: float = STARTING_CASH
 
@@ -50,9 +51,20 @@ def closed_bars(symbol: str, limit: int = 300) -> pd.DataFrame:
 def load_state(path: Path = STATE_PATH) -> PaperState:
     if not path.exists(): return PaperState()
     d = json.loads(path.read_text(encoding="utf-8"))
-    return PaperState(float(d.get("cash", STARTING_CASH)), d.get("position"),
-                      d.get("last_processed_bar"), list(d.get("trades", [])),
-                      float(d.get("peak_equity", STARTING_CASH)))
+    legacy_last = d.get("last_processed_bar")
+    per_symbol = dict(d.get("last_processed_bars", {}))
+    # Backward compatibility: old state used one global watermark. Use it as
+    # each symbol's starting watermark; subsequent processing is per-symbol.
+    if not per_symbol and legacy_last:
+        per_symbol = {symbol: legacy_last for symbol in SYMBOLS}
+    return PaperState(
+        cash=float(d.get("cash", STARTING_CASH)),
+        position=d.get("position"),
+        last_processed_bar=legacy_last,
+        last_processed_bars=per_symbol,
+        trades=list(d.get("trades", [])),
+        peak_equity=float(d.get("peak_equity", STARTING_CASH)),
+    )
 
 def save_json(path: Path, data: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -81,7 +93,9 @@ def indicators(df: pd.DataFrame) -> pd.DataFrame:
     return x
 
 def strategy_signal(row: pd.Series, strategy: str) -> bool:
-    required = ["ema_fast","ema_slow","mom_3","rsi","range_high","range_low","volume_ratio","atr_pct"]
+    # RSI is only required by the mean-reversion rule; trend/breakout signals
+    # must remain usable when RSI is undefined (e.g. a run of rising closes).
+    required = ["ema_fast", "ema_slow", "mom_3", "range_high", "range_low", "volume_ratio", "atr_pct"]
     if any(pd.isna(row.get(k)) for k in required): return False
     vol_ok = 0.0002 <= row["atr_pct"] <= 0.025
     if strategy == "trend":
@@ -89,8 +103,25 @@ def strategy_signal(row: pd.Series, strategy: str) -> bool:
     if strategy == "breakout":
         return bool(row["Close"] > row["range_high"] and row["volume_ratio"] >= 1.0 and vol_ok)
     if strategy == "mean_reversion":
+        if pd.isna(row.get("rsi")): return False
         return bool(row["rsi"] < 28 and row["Close"] > row["ema_slow"] * 0.94 and vol_ok)
     raise ValueError(f"Unknown strategy: {strategy}")
+
+def should_exit(position: dict[str, Any], row: pd.Series) -> tuple[bool, str]:
+    """Strategy-specific exits, evaluated only from the completed prior candle."""
+    strategy = position.get("strategy", "trend")
+    if strategy == "mean_reversion":
+        # Mean-reversion trade exits when RSI normalizes or the recovery thesis fails.
+        if pd.notna(row.get("rsi")) and row["rsi"] >= 50:
+            return True, "mean_reversion_rsi_normalized"
+        if row["Close"] < row["ema_slow"] * 0.94:
+            return True, "mean_reversion_thesis_failed"
+        return False, ""
+    if row["ema_fast"] < row["ema_slow"] or row["mom_3"] < 0:
+        return True, "trend_or_momentum_exit"
+    if pd.notna(row.get("rsi")) and row["rsi"] > 72:
+        return True, "rsi_overbought_exit"
+    return False, ""
 
 def equity(state: PaperState, marks: dict[str, float]) -> float:
     value = state.cash
@@ -138,45 +169,85 @@ def run_once(state_path: Path = STATE_PATH, report_path: Path = REPORT_PATH) -> 
     for sym in SYMBOLS:
         try:
             bars = closed_bars(sym, 300)
-            if len(bars) >= 40: data[sym] = indicators(bars)
-            else: errors[sym] = "insufficient_closed_bars"
-        except Exception as exc: errors[sym] = f"{type(exc).__name__}: {exc}"
+            if len(bars) >= 40:
+                data[sym] = indicators(bars)
+            else:
+                errors[sym] = "insufficient_closed_bars"
+        except Exception as exc:
+            errors[sym] = f"{type(exc).__name__}: {exc}"
     if not data:
         report = make_report(state, {}, errors, "no_market_data")
-        save_json(report_path, report); save_json(state_path, asdict(state)); return report
-    marks = {s:float(df["Close"].iloc[-1]) for s,df in data.items()}
-    latest = max(df.index[-1] for df in data.values())
-    if state.last_processed_bar is None:
-        state.last_processed_bar = latest.isoformat()
+        save_json(report_path, report)
+        save_json(state_path, asdict(state))
+        return report
+
+    marks = {s: float(df["Close"].iloc[-1]) for s, df in data.items()}
+    # First run initializes each market independently rather than pretending
+    # the shared latest timestamp represents all three symbols.
+    if not state.last_processed_bars:
+        state.last_processed_bars = {s: df.index[-1].isoformat() for s, df in data.items()}
+        state.last_processed_bar = max(pd.Timestamp(v) for v in state.last_processed_bars.values()).isoformat()
         state.peak_equity = max(state.peak_equity, equity(state, marks))
         report = make_report(state, marks, errors, "initialized_no_trade")
-        save_json(state_path, asdict(state)); save_json(report_path, report); return report
-    last = pd.Timestamp(state.last_processed_bar)
-    unseen = [df.index[-1] for df in data.values() if df.index[-1] > last]
-    if unseen:
-        ts = max(unseen)
-        candidates = []
-        for sym, df in data.items():
-            if ts not in df.index: continue
+        save_json(state_path, asdict(state))
+        save_json(report_path, report)
+        return report
+
+    # Process every available unseen candle in chronological order. The cursor
+    # is per symbol, so one market cannot advance another market's watermark.
+    events: dict[pd.Timestamp, list[str]] = {}
+    for sym, df in data.items():
+        cursor = pd.Timestamp(state.last_processed_bars.get(sym, state.last_processed_bar or df.index[0]))
+        if cursor < df.index[0]:
+            errors[sym] = "history_gap_exceeds_fetch_window; oldest missed candles cannot be reconstructed"
+            # Avoid replaying unknown history forever; resume from oldest candle
+            # available, preserving the warning in this report.
+            cursor = df.index[0] - pd.Timedelta(nanoseconds=1)
+        for ts in df.index:
+            if ts > cursor:
+                events.setdefault(ts, []).append(sym)
+
+    for ts in sorted(events):
+        # First process the existing position's exit, independent of symbol
+        # iteration order. Then evaluate entries across all symbols if flat.
+        held_symbol = state.position.get("symbol") if state.position else None
+        if held_symbol and held_symbol in events[ts]:
+            df = data[held_symbol]
             loc = int(df.index.get_loc(ts))
-            if loc < 1: continue
-            prev, cur = df.iloc[loc-1], df.iloc[loc]
-            price = float(cur["Open"])
-            if state.position and state.position["symbol"] == sym:
-                if prev["ema_fast"] < prev["ema_slow"] or prev["mom_3"] < 0 or prev["rsi"] > 72:
-                    sell(state, price, ts.isoformat(), "trend_momentum_or_rsi_exit")
-            if not state.position:
-                for strat in ["trend","breakout","mean_reversion"]:
+            if loc > 0:
+                prev, cur = df.iloc[loc - 1], df.iloc[loc]
+                exit_now, reason = should_exit(state.position, prev)
+                if exit_now:
+                    sell(state, float(cur["Open"]), ts.isoformat(), reason)
+
+        candidates: list[tuple[float, str, str, float]] = []
+        if not state.position:
+            for sym in events[ts]:
+                df = data[sym]
+                loc = int(df.index.get_loc(ts))
+                if loc < 1:
+                    continue
+                prev, cur = df.iloc[loc - 1], df.iloc[loc]
+                price = float(cur["Open"])
+                for strat in ["trend", "breakout", "mean_reversion"]:
                     if strategy_signal(prev, strat):
-                        score = float(prev["mom_3"]) if strat != "mean_reversion" else float(30-prev["rsi"])/1000
-                        candidates.append((score,sym,strat,price))
+                        score = float(30 - prev["rsi"]) / 1000 if strat == "mean_reversion" else float(prev["mom_3"])
+                        candidates.append((score, sym, strat, price))
+        # If several symbols have signals on the same timestamp, choose one
+        # deterministically; the portfolio remains one-position, long/flat.
         if not state.position and candidates:
-            _, sym, strat, price = max(candidates, key=lambda x:x[0])
+            _, sym, strat, price = max(candidates, key=lambda x: (x[0], x[1], x[2]))
             buy(state, sym, price, ts.isoformat(), strat)
-        state.last_processed_bar = ts.isoformat()
+
+        for sym in events[ts]:
+            state.last_processed_bars[sym] = ts.isoformat()
+
+    if state.last_processed_bars:
+        state.last_processed_bar = max(pd.Timestamp(v) for v in state.last_processed_bars.values()).isoformat()
     state.peak_equity = max(state.peak_equity, equity(state, marks))
     report = make_report(state, marks, errors, "updated")
-    save_json(state_path, asdict(state)); save_json(report_path, report)
+    save_json(state_path, asdict(state))
+    save_json(report_path, report)
     return report
 
 def main() -> None:
