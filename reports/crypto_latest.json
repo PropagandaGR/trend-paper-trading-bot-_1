@@ -1,31 +1,27 @@
 {
-  "cash": 14.51302666,
+  "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -5.7107,
-  "equity": 14.51302666,
-  "last_processed_bar": "2026-10-23T06:25:00+00:00",
+  "drawdown_from_peak_pct": -5.90391,
+  "equity": 14.4832884,
+  "last_processed_bar": "2026-10-23T11:55:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 81848.31,
-    "ETHUSDT": 2405.43,
-    "SOLUSDT": 104.49
+    "BTCUSDT": 81726.1,
+    "ETHUSDT": 2403.04,
+    "SOLUSDT": 104.54
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": -0.48697334,
-  "position": null,
+  "pnl_usdt": -0.5167116,
+  "position": {
+    "entry_price": 104.75465,
+    "entry_time": "2026-10-23T11:55:00+00:00",
+    "quantity": 0.13854303044752958,
+    "strategy": "trend",
+    "symbol": "SOLUSDT"
+  },
   "recent_trades": [
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 107.87776999999998,
-      "quantity": 0.14268017754107543,
-      "reference_price": 107.77,
-      "side": "BUY",
-      "strategy": "trend",
-      "symbol": "SOLUSDT",
-      "time": "2026-10-20T15:00:00+00:00"
-    },
     {
       "cost_bps_per_side": 10.0,
       "fill_price": 105.7941,
@@ -125,9 +121,19 @@
       "strategy": "trend",
       "symbol": "BTCUSDT",
       "time": "2026-10-22T23:10:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 104.75465,
+      "quantity": 0.13854303044752958,
+      "reference_price": 104.65,
+      "side": "BUY",
+      "strategy": "trend",
+      "symbol": "SOLUSDT",
+      "time": "2026-10-23T11:55:00+00:00"
     }
   ],
-  "return_pct": -3.24649,
+  "return_pct": -3.44474,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -135,6 +141,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 16,
-  "updated_at": "2026-10-23T06:33:06.661658+00:00"
+  "trade_count": 17,
+  "updated_at": "2026-10-23T12:03:41.367863+00:00"
 }
