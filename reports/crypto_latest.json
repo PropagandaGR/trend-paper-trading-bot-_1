@@ -1,31 +1,27 @@
 {
-  "cash": 14.46713006,
+  "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -6.00889,
-  "equity": 14.46713006,
-  "last_processed_bar": "2026-10-26T17:25:00+00:00",
+  "drawdown_from_peak_pct": -6.02487,
+  "equity": 14.46467016,
+  "last_processed_bar": "2026-10-26T21:45:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 80330.01,
-    "ETHUSDT": 2325.33,
-    "SOLUSDT": 101.42
+    "BTCUSDT": 80193.62,
+    "ETHUSDT": 2315.74,
+    "SOLUSDT": 100.83
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": -0.53286994,
-  "position": null,
+  "pnl_usdt": -0.53532984,
+  "position": {
+    "entry_price": 2316.13382,
+    "entry_time": "2026-10-26T21:45:00+00:00",
+    "quantity": 0.006246241011854164,
+    "strategy": "trend",
+    "symbol": "ETHUSDT"
+  },
   "recent_trades": [
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 107.57746999999999,
-      "quantity": 0.1390160183161071,
-      "reference_price": 107.47,
-      "side": "BUY",
-      "strategy": "trend",
-      "symbol": "SOLUSDT",
-      "time": "2026-10-22T00:50:00+00:00"
-    },
     {
       "cost_bps_per_side": 10.0,
       "fill_price": 104.78511,
@@ -125,9 +121,19 @@
       "strategy": "trend",
       "symbol": "SOLUSDT",
       "time": "2026-10-24T22:25:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 2316.13382,
+      "quantity": 0.006246241011854164,
+      "reference_price": 2313.82,
+      "side": "BUY",
+      "strategy": "trend",
+      "symbol": "ETHUSDT",
+      "time": "2026-10-26T21:45:00+00:00"
     }
   ],
-  "return_pct": -3.55247,
+  "return_pct": -3.56887,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -135,6 +141,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 22,
-  "updated_at": "2026-10-26T17:31:19.691733+00:00"
+  "trade_count": 23,
+  "updated_at": "2026-10-26T21:50:25.902762+00:00"
 }
