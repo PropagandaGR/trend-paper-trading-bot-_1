@@ -1,31 +1,27 @@
 {
-  "cash": 14.4384119,
+  "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -6.19547,
-  "equity": 14.4384119,
-  "last_processed_bar": "2026-10-28T23:25:00+00:00",
+  "drawdown_from_peak_pct": -6.10177,
+  "equity": 14.45283444,
+  "last_processed_bar": "2026-10-29T02:45:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 81358.0,
-    "ETHUSDT": 2361.47,
-    "SOLUSDT": 102.47
+    "BTCUSDT": 79873.42,
+    "ETHUSDT": 2305.01,
+    "SOLUSDT": 99.9
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": -0.5615881,
-  "position": null,
+  "pnl_usdt": -0.54716556,
+  "position": {
+    "entry_price": 79793.71399999999,
+    "entry_time": "2026-10-29T02:45:00+00:00",
+    "quantity": 0.0001809467334797009,
+    "strategy": "mean_reversion",
+    "symbol": "BTCUSDT"
+  },
   "recent_trades": [
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 81607.8263,
-      "quantity": 0.00017849769356024738,
-      "reference_price": 81526.3,
-      "side": "BUY",
-      "strategy": "trend",
-      "symbol": "BTCUSDT",
-      "time": "2026-10-22T19:55:00+00:00"
-    },
     {
       "cost_bps_per_side": 10.0,
       "fill_price": 81306.52209,
@@ -125,9 +121,19 @@
       "strategy": "trend",
       "symbol": "ETHUSDT",
       "time": "2026-10-27T06:05:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 79793.71399999999,
+      "quantity": 0.0001809467334797009,
+      "reference_price": 79714.0,
+      "side": "BUY",
+      "strategy": "mean_reversion",
+      "symbol": "BTCUSDT",
+      "time": "2026-10-29T02:45:00+00:00"
     }
   ],
-  "return_pct": -3.74392,
+  "return_pct": -3.64777,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -135,6 +141,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 24,
-  "updated_at": "2026-10-28T23:34:06.539975+00:00"
+  "trade_count": 25,
+  "updated_at": "2026-10-29T02:50:29.463574+00:00"
 }
