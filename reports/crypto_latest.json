@@ -2,48 +2,26 @@
   "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -3.85395,
-  "equity": 14.79881907,
-  "last_processed_bar": "2026-10-29T16:00:00+00:00",
+  "drawdown_from_peak_pct": -7.424,
+  "equity": 14.24931551,
+  "last_processed_bar": "2026-10-29T21:00:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 81785.5,
-    "ETHUSDT": 2366.96,
-    "SOLUSDT": 102.67
+    "BTCUSDT": 78906.33,
+    "ETHUSDT": 2250.84,
+    "SOLUSDT": 95.6
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": -0.20118093,
+  "pnl_usdt": -0.75068449,
   "position": {
-    "entry_price": 79793.71399999999,
-    "entry_time": "2026-10-29T02:45:00+00:00",
-    "quantity": 0.0001809467334797009,
+    "entry_price": 78930.83197999999,
+    "entry_time": "2026-10-29T21:00:00+00:00",
+    "quantity": 0.00018058520154467654,
     "strategy": "mean_reversion",
     "symbol": "BTCUSDT"
   },
   "recent_trades": [
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 81306.52209,
-      "quantity": 0.00017849769356024738,
-      "realized_pnl": -0.05378210654499327,
-      "reason": "trend_momentum_or_rsi_exit",
-      "reference_price": 81387.91,
-      "side": "SELL",
-      "strategy": "trend",
-      "symbol": "BTCUSDT",
-      "time": "2026-10-22T23:10:00+00:00"
-    },
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 104.75465,
-      "quantity": 0.13854303044752958,
-      "reference_price": 104.65,
-      "side": "BUY",
-      "strategy": "trend",
-      "symbol": "SOLUSDT",
-      "time": "2026-10-23T11:55:00+00:00"
-    },
     {
       "cost_bps_per_side": 10.0,
       "fill_price": 104.52537,
@@ -131,9 +109,31 @@
       "strategy": "mean_reversion",
       "symbol": "BTCUSDT",
       "time": "2026-10-29T02:45:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 78773.12801999999,
+      "quantity": 0.0001809467334797009,
+      "realized_pnl": -0.18467169931617988,
+      "reason": "trend_momentum_or_rsi_exit",
+      "reference_price": 78851.98,
+      "side": "SELL",
+      "strategy": "mean_reversion",
+      "symbol": "BTCUSDT",
+      "time": "2026-10-29T21:00:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 78930.83197999999,
+      "quantity": 0.00018058520154467654,
+      "reference_price": 78851.98,
+      "side": "BUY",
+      "strategy": "mean_reversion",
+      "symbol": "BTCUSDT",
+      "time": "2026-10-29T21:00:00+00:00"
     }
   ],
-  "return_pct": -1.34121,
+  "return_pct": -5.00456,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -141,6 +141,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 25,
-  "updated_at": "2026-10-29T16:08:58.230045+00:00"
+  "trade_count": 27,
+  "updated_at": "2026-10-29T21:08:18.863391+00:00"
 }
