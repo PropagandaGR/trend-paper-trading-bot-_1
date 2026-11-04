@@ -4,11 +4,11 @@
   "data_errors": {},
   "drawdown_from_peak_pct": -9.89064,
   "equity": 13.86965016,
-  "last_processed_bar": "2026-11-04T02:15:00+00:00",
+  "last_processed_bar": "2026-11-04T17:25:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 76866.92,
-    "ETHUSDT": 2262.95,
-    "SOLUSDT": 91.78
+    "BTCUSDT": 80450.67,
+    "ETHUSDT": 2428.49,
+    "SOLUSDT": 95.98
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
@@ -136,5 +136,5 @@
     "SOLUSDT"
   ],
   "trade_count": 36,
-  "updated_at": "2026-11-04T02:21:44.084338+00:00"
+  "updated_at": "2026-11-04T17:32:14.655505+00:00"
 }
