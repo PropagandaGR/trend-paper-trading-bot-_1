@@ -1,31 +1,27 @@
 {
-  "cash": 13.83509116,
+  "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -10.11517,
-  "equity": 13.83509116,
-  "last_processed_bar": "2026-11-07T20:20:00+00:00",
+  "drawdown_from_peak_pct": -10.12488,
+  "equity": 13.83359518,
+  "last_processed_bar": "2026-11-07T23:45:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 75761.99,
-    "ETHUSDT": 2232.13,
-    "SOLUSDT": 89.52
+    "BTCUSDT": 75890.47,
+    "ETHUSDT": 2239.03,
+    "SOLUSDT": 89.79
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": -1.16490884,
-  "position": null,
+  "pnl_usdt": -1.16640482,
+  "position": {
+    "entry_price": 89.79970999999999,
+    "entry_time": "2026-11-07T23:45:00+00:00",
+    "quantity": 0.15406610069272075,
+    "strategy": "trend",
+    "symbol": "SOLUSDT"
+  },
   "recent_trades": [
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 77759.68199999999,
-      "quantity": 0.00018183484101155442,
-      "reference_price": 77682.0,
-      "side": "BUY",
-      "strategy": "trend",
-      "symbol": "BTCUSDT",
-      "time": "2026-10-31T22:00:00+00:00"
-    },
     {
       "cost_bps_per_side": 10.0,
       "fill_price": 77821.72038,
@@ -125,9 +121,19 @@
       "strategy": "trend",
       "symbol": "SOLUSDT",
       "time": "2026-11-06T18:20:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 89.79970999999999,
+      "quantity": 0.15406610069272075,
+      "reference_price": 89.71,
+      "side": "BUY",
+      "strategy": "trend",
+      "symbol": "SOLUSDT",
+      "time": "2026-11-07T23:45:00+00:00"
     }
   ],
-  "return_pct": -7.76606,
+  "return_pct": -7.77603,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -135,6 +141,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 40,
-  "updated_at": "2026-11-07T20:26:05.809576+00:00"
+  "trade_count": 41,
+  "updated_at": "2026-11-07T23:52:13.843222+00:00"
 }
