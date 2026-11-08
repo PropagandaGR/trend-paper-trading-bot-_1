@@ -2,18 +2,18 @@
   "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -10.5653,
-  "equity": 13.7658061,
-  "last_processed_bar": "2026-11-08T04:10:00+00:00",
+  "drawdown_from_peak_pct": -10.48523,
+  "equity": 13.77813138,
+  "last_processed_bar": "2026-11-08T11:15:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 75929.63,
-    "ETHUSDT": 2238.12,
-    "SOLUSDT": 89.35
+    "BTCUSDT": 75977.87,
+    "ETHUSDT": 2239.55,
+    "SOLUSDT": 89.43
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": -1.2341939,
+  "pnl_usdt": -1.22186862,
   "position": {
     "entry_price": 89.79970999999999,
     "entry_time": "2026-11-07T23:45:00+00:00",
@@ -133,7 +133,7 @@
       "time": "2026-11-07T23:45:00+00:00"
     }
   ],
-  "return_pct": -8.22796,
+  "return_pct": -8.14579,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -142,5 +142,5 @@
     "SOLUSDT"
   ],
   "trade_count": 41,
-  "updated_at": "2026-11-08T04:15:13.348753+00:00"
+  "updated_at": "2026-11-08T11:23:18.197283+00:00"
 }
