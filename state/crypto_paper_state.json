@@ -1,14 +1,8 @@
 {
-  "cash": 0.0,
-  "last_processed_bar": "2026-11-08T11:15:00+00:00",
+  "cash": 13.72433612457114,
+  "last_processed_bar": "2026-11-08T17:05:00+00:00",
   "peak_equity": 15.392019376335298,
-  "position": {
-    "entry_price": 89.79970999999999,
-    "entry_time": "2026-11-07T23:45:00+00:00",
-    "quantity": 0.15406610069272075,
-    "strategy": "trend",
-    "symbol": "SOLUSDT"
-  },
+  "position": null,
   "trades": [
     {
       "cost_bps_per_side": 10.0,
@@ -459,6 +453,18 @@
       "strategy": "trend",
       "symbol": "SOLUSDT",
       "time": "2026-11-07T23:45:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 89.08083,
+      "quantity": 0.15406610069272075,
+      "realized_pnl": -0.11075503846598167,
+      "reason": "trend_momentum_or_rsi_exit",
+      "reference_price": 89.17,
+      "side": "SELL",
+      "strategy": "trend",
+      "symbol": "SOLUSDT",
+      "time": "2026-11-08T17:05:00+00:00"
     }
   ]
 }
