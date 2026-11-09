@@ -1,31 +1,27 @@
 {
-  "cash": 13.72433612,
+  "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -10.83473,
-  "equity": 13.72433612,
-  "last_processed_bar": "2026-11-08T21:05:00+00:00",
+  "drawdown_from_peak_pct": -10.8728,
+  "equity": 13.71847539,
+  "last_processed_bar": "2026-11-09T00:50:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 75731.77,
-    "ETHUSDT": 2225.66,
-    "SOLUSDT": 89.12
+    "BTCUSDT": 75152.43,
+    "ETHUSDT": 2142.86,
+    "SOLUSDT": 87.38
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": -1.27566388,
-  "position": null,
+  "pnl_usdt": -1.28152461,
+  "position": {
+    "entry_price": 87.41732999999999,
+    "entry_time": "2026-11-09T00:50:00+00:00",
+    "quantity": 0.1569978873133181,
+    "strategy": "trend",
+    "symbol": "SOLUSDT"
+  },
   "recent_trades": [
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 95.31521999999998,
-      "quantity": 0.14846212548785961,
-      "reference_price": 95.22,
-      "side": "BUY",
-      "strategy": "trend",
-      "symbol": "SOLUSDT",
-      "time": "2026-11-01T14:20:00+00:00"
-    },
     {
       "cost_bps_per_side": 10.0,
       "fill_price": 94.22568,
@@ -125,9 +121,19 @@
       "strategy": "trend",
       "symbol": "SOLUSDT",
       "time": "2026-11-08T17:05:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 87.41732999999999,
+      "quantity": 0.1569978873133181,
+      "reference_price": 87.33,
+      "side": "BUY",
+      "strategy": "trend",
+      "symbol": "SOLUSDT",
+      "time": "2026-11-09T00:50:00+00:00"
     }
   ],
-  "return_pct": -8.50443,
+  "return_pct": -8.5435,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -135,6 +141,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 42,
-  "updated_at": "2026-11-08T21:13:17.883958+00:00"
+  "trade_count": 43,
+  "updated_at": "2026-11-09T00:59:51.972609+00:00"
 }
