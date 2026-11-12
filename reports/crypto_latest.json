@@ -1,31 +1,27 @@
 {
-  "cash": 13.15858735,
+  "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -14.51032,
-  "equity": 13.15858735,
-  "last_processed_bar": "2026-11-12T03:40:00+00:00",
+  "drawdown_from_peak_pct": -14.68713,
+  "equity": 13.13137376,
+  "last_processed_bar": "2026-11-12T11:50:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 73776.01,
-    "ETHUSDT": 2053.28,
-    "SOLUSDT": 83.23
+    "BTCUSDT": 72834.09,
+    "ETHUSDT": 2018.73,
+    "SOLUSDT": 82.33
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": -1.84141265,
-  "position": null,
+  "pnl_usdt": -1.86862624,
+  "position": {
+    "entry_price": 72985.03211999999,
+    "entry_time": "2026-11-12T11:50:00+00:00",
+    "quantity": 0.00018029158814847094,
+    "strategy": "mean_reversion",
+    "symbol": "BTCUSDT"
+  },
   "recent_trades": [
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 89.79970999999999,
-      "quantity": 0.15406610069272075,
-      "reference_price": 89.71,
-      "side": "BUY",
-      "strategy": "trend",
-      "symbol": "SOLUSDT",
-      "time": "2026-11-07T23:45:00+00:00"
-    },
     {
       "cost_bps_per_side": 10.0,
       "fill_price": 89.08083,
@@ -125,9 +121,19 @@
       "strategy": "mean_reversion",
       "symbol": "SOLUSDT",
       "time": "2026-11-12T03:40:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 72985.03211999999,
+      "quantity": 0.00018029158814847094,
+      "reference_price": 72912.12,
+      "side": "BUY",
+      "strategy": "mean_reversion",
+      "symbol": "BTCUSDT",
+      "time": "2026-11-12T11:50:00+00:00"
     }
   ],
-  "return_pct": -12.27608,
+  "return_pct": -12.45751,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -135,6 +141,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 50,
-  "updated_at": "2026-11-12T03:48:00.350735+00:00"
+  "trade_count": 51,
+  "updated_at": "2026-11-12T11:56:01.112583+00:00"
 }
