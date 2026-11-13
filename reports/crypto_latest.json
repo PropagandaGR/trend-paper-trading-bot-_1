@@ -1,31 +1,27 @@
 {
-  "cash": 12.87975882,
+  "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -16.32184,
-  "equity": 12.87975882,
-  "last_processed_bar": "2026-11-13T00:35:00+00:00",
+  "drawdown_from_peak_pct": -16.34309,
+  "equity": 12.87648812,
+  "last_processed_bar": "2026-11-13T07:15:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 70936.01,
-    "ETHUSDT": 2006.1,
-    "SOLUSDT": 81.24
+    "BTCUSDT": 69137.45,
+    "ETHUSDT": 1944.57,
+    "SOLUSDT": 80.51
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": -2.12024118,
-  "position": null,
+  "pnl_usdt": -2.12351188,
+  "position": {
+    "entry_price": 80.53044999999999,
+    "entry_time": "2026-11-13T07:15:00+00:00",
+    "quantity": 0.15993650621632766,
+    "strategy": "trend",
+    "symbol": "SOLUSDT"
+  },
   "recent_trades": [
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 87.41732999999999,
-      "quantity": 0.1569978873133181,
-      "reference_price": 87.33,
-      "side": "BUY",
-      "strategy": "trend",
-      "symbol": "SOLUSDT",
-      "time": "2026-11-09T00:50:00+00:00"
-    },
     {
       "cost_bps_per_side": 10.0,
       "fill_price": 85.50441000000001,
@@ -125,9 +121,19 @@
       "strategy": "mean_reversion",
       "symbol": "BTCUSDT",
       "time": "2026-11-12T19:40:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 80.53044999999999,
+      "quantity": 0.15993650621632766,
+      "reference_price": 80.45,
+      "side": "BUY",
+      "strategy": "trend",
+      "symbol": "SOLUSDT",
+      "time": "2026-11-13T07:15:00+00:00"
     }
   ],
-  "return_pct": -14.13494,
+  "return_pct": -14.15675,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -135,6 +141,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 52,
-  "updated_at": "2026-11-13T00:44:32.439271+00:00"
+  "trade_count": 53,
+  "updated_at": "2026-11-13T07:24:42.175332+00:00"
 }
