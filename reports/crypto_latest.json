@@ -1,31 +1,27 @@
 {
-  "cash": 12.6704799,
+  "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -17.6815,
-  "equity": 12.6704799,
-  "last_processed_bar": "2026-11-14T08:10:00+00:00",
+  "drawdown_from_peak_pct": -17.94115,
+  "equity": 12.63051434,
+  "last_processed_bar": "2026-11-14T15:05:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 67279.91,
-    "ETHUSDT": 1902.16,
-    "SOLUSDT": 75.4
+    "BTCUSDT": 65718.44,
+    "ETHUSDT": 1850.1,
+    "SOLUSDT": 74.15
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": -2.3295201,
-  "position": null,
+  "pnl_usdt": -2.36948566,
+  "position": {
+    "entry_price": 1855.9540999999997,
+    "entry_time": "2026-11-14T15:05:00+00:00",
+    "quantity": 0.006826936023381855,
+    "strategy": "mean_reversion",
+    "symbol": "ETHUSDT"
+  },
   "recent_trades": [
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 74392.11779999999,
-      "quantity": 0.00017916166280478775,
-      "reference_price": 74317.8,
-      "side": "BUY",
-      "strategy": "trend",
-      "symbol": "BTCUSDT",
-      "time": "2026-11-11T16:30:00+00:00"
-    },
     {
       "cost_bps_per_side": 10.0,
       "fill_price": 73866.56949,
@@ -125,9 +121,19 @@
       "strategy": "mean_reversion",
       "symbol": "SOLUSDT",
       "time": "2026-11-13T21:30:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 1855.9540999999997,
+      "quantity": 0.006826936023381855,
+      "reference_price": 1854.1,
+      "side": "BUY",
+      "strategy": "mean_reversion",
+      "symbol": "ETHUSDT",
+      "time": "2026-11-14T15:05:00+00:00"
     }
   ],
-  "return_pct": -15.53013,
+  "return_pct": -15.79657,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -135,6 +141,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 56,
-  "updated_at": "2026-11-14T08:16:58.966268+00:00"
+  "trade_count": 57,
+  "updated_at": "2026-11-14T15:12:47.500964+00:00"
 }
