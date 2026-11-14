@@ -1,14 +1,8 @@
 {
-  "cash": 0.0,
-  "last_processed_bar": "2026-11-14T15:05:00+00:00",
+  "cash": 12.486255717135894,
+  "last_processed_bar": "2026-11-14T19:50:00+00:00",
   "peak_equity": 15.392019376335298,
-  "position": {
-    "entry_price": 1855.9540999999997,
-    "entry_time": "2026-11-14T15:05:00+00:00",
-    "quantity": 0.006826936023381855,
-    "strategy": "mean_reversion",
-    "symbol": "ETHUSDT"
-  },
+  "position": null,
   "trades": [
     {
       "cost_bps_per_side": 10.0,
@@ -635,6 +629,18 @@
       "strategy": "mean_reversion",
       "symbol": "ETHUSDT",
       "time": "2026-11-14T15:05:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 1828.9692,
+      "quantity": 0.006826936023381855,
+      "realized_pnl": -0.1842241858973548,
+      "reason": "trend_momentum_or_rsi_exit",
+      "reference_price": 1830.8,
+      "side": "SELL",
+      "strategy": "mean_reversion",
+      "symbol": "ETHUSDT",
+      "time": "2026-11-14T19:50:00+00:00"
     }
   ]
 }
