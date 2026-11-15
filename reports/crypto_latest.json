@@ -1,31 +1,27 @@
 {
-  "cash": 12.48625572,
+  "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -18.87838,
-  "equity": 12.48625572,
-  "last_processed_bar": "2026-11-15T03:40:00+00:00",
+  "drawdown_from_peak_pct": -18.94822,
+  "equity": 12.47550531,
+  "last_processed_bar": "2026-11-15T11:25:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 65157.72,
-    "ETHUSDT": 1826.08,
-    "SOLUSDT": 71.78
+    "BTCUSDT": 65446.37,
+    "ETHUSDT": 1833.49,
+    "SOLUSDT": 72.39
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": -2.51374428,
-  "position": null,
+  "pnl_usdt": -2.52449469,
+  "position": {
+    "entry_price": 72.45237999999999,
+    "entry_time": "2026-11-15T11:25:00+00:00",
+    "quantity": 0.17233741275491427,
+    "strategy": "trend",
+    "symbol": "SOLUSDT"
+  },
   "recent_trades": [
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 83.59351,
-      "quantity": 0.15831441239294536,
-      "reference_price": 83.51,
-      "side": "BUY",
-      "strategy": "mean_reversion",
-      "symbol": "SOLUSDT",
-      "time": "2026-11-11T23:00:00+00:00"
-    },
     {
       "cost_bps_per_side": 10.0,
       "fill_price": 83.1168,
@@ -125,9 +121,19 @@
       "strategy": "mean_reversion",
       "symbol": "ETHUSDT",
       "time": "2026-11-14T19:50:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 72.45237999999999,
+      "quantity": 0.17233741275491427,
+      "reference_price": 72.38,
+      "side": "BUY",
+      "strategy": "trend",
+      "symbol": "SOLUSDT",
+      "time": "2026-11-15T11:25:00+00:00"
     }
   ],
-  "return_pct": -16.7583,
+  "return_pct": -16.82996,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -135,6 +141,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 58,
-  "updated_at": "2026-11-15T03:47:42.866655+00:00"
+  "trade_count": 59,
+  "updated_at": "2026-11-15T11:34:06.799918+00:00"
 }
