@@ -1,31 +1,27 @@
 {
-  "cash": 11.96630337,
+  "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -22.25644,
-  "equity": 11.96630337,
-  "last_processed_bar": "2026-11-16T09:55:00+00:00",
+  "drawdown_from_peak_pct": -22.09447,
+  "equity": 11.99123481,
+  "last_processed_bar": "2026-11-16T10:35:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 64327.77,
-    "ETHUSDT": 1798.04,
-    "SOLUSDT": 70.86
+    "BTCUSDT": 64621.24,
+    "ETHUSDT": 1807.92,
+    "SOLUSDT": 71.52
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": -3.03369663,
-  "position": null,
+  "pnl_usdt": -3.00876519,
+  "position": {
+    "entry_price": 71.37129999999999,
+    "entry_time": "2026-11-16T10:35:00+00:00",
+    "quantity": 0.16766267912369925,
+    "strategy": "trend",
+    "symbol": "SOLUSDT"
+  },
   "recent_trades": [
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 80.53044999999999,
-      "quantity": 0.15993650621632766,
-      "reference_price": 80.45,
-      "side": "BUY",
-      "strategy": "trend",
-      "symbol": "SOLUSDT",
-      "time": "2026-11-13T07:15:00+00:00"
-    },
     {
       "cost_bps_per_side": 10.0,
       "fill_price": 79.6203,
@@ -125,9 +121,19 @@
       "strategy": "trend",
       "symbol": "SOLUSDT",
       "time": "2026-11-16T09:55:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 71.37129999999999,
+      "quantity": 0.16766267912369925,
+      "reference_price": 71.3,
+      "side": "BUY",
+      "strategy": "trend",
+      "symbol": "SOLUSDT",
+      "time": "2026-11-16T10:35:00+00:00"
     }
   ],
-  "return_pct": -20.22464,
+  "return_pct": -20.05843,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -135,6 +141,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 62,
-  "updated_at": "2026-11-16T10:04:40.264635+00:00"
+  "trade_count": 63,
+  "updated_at": "2026-11-16T10:40:44.968748+00:00"
 }
