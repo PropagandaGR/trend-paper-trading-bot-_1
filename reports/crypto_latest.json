@@ -1,31 +1,27 @@
 {
-  "cash": 12.15227224,
+  "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -21.04823,
-  "equity": 12.15227224,
-  "last_processed_bar": "2026-11-19T08:40:00+00:00",
+  "drawdown_from_peak_pct": -21.15901,
+  "equity": 12.13521972,
+  "last_processed_bar": "2026-11-19T17:35:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 63593.8,
-    "ETHUSDT": 1800.58,
-    "SOLUSDT": 74.35
+    "BTCUSDT": 63076.01,
+    "ETHUSDT": 1777.92,
+    "SOLUSDT": 74.11
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": -2.84772776,
-  "position": null,
+  "pnl_usdt": -2.86478028,
+  "position": {
+    "entry_price": 74.21413999999999,
+    "entry_time": "2026-11-19T17:35:00+00:00",
+    "quantity": 0.16374604942333507,
+    "strategy": "trend",
+    "symbol": "SOLUSDT"
+  },
   "recent_trades": [
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 1855.9540999999997,
-      "quantity": 0.006826936023381855,
-      "reference_price": 1854.1,
-      "side": "BUY",
-      "strategy": "mean_reversion",
-      "symbol": "ETHUSDT",
-      "time": "2026-11-14T15:05:00+00:00"
-    },
     {
       "cost_bps_per_side": 10.0,
       "fill_price": 1828.9692,
@@ -125,9 +121,19 @@
       "strategy": "trend",
       "symbol": "SOLUSDT",
       "time": "2026-11-18T02:15:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 74.21413999999999,
+      "quantity": 0.16374604942333507,
+      "reference_price": 74.14,
+      "side": "BUY",
+      "strategy": "trend",
+      "symbol": "SOLUSDT",
+      "time": "2026-11-19T17:35:00+00:00"
     }
   ],
-  "return_pct": -18.98485,
+  "return_pct": -19.09854,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -135,6 +141,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 66,
-  "updated_at": "2026-11-19T08:46:06.187995+00:00"
+  "trade_count": 67,
+  "updated_at": "2026-11-19T17:44:50.846873+00:00"
 }
