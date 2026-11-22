@@ -1,14 +1,8 @@
 {
-  "cash": 0.0,
-  "last_processed_bar": "2026-11-22T11:40:00+00:00",
+  "cash": 11.286864392380611,
+  "last_processed_bar": "2026-11-22T18:40:00+00:00",
   "peak_equity": 15.392019376335298,
-  "position": {
-    "entry_price": 59375.19587999999,
-    "entry_time": "2026-11-22T03:15:00+00:00",
-    "quantity": 0.0001859612402790324,
-    "strategy": "mean_reversion",
-    "symbol": "BTCUSDT"
-  },
+  "position": null,
   "trades": [
     {
       "cost_bps_per_side": 10.0,
@@ -811,6 +805,18 @@
       "strategy": "mean_reversion",
       "symbol": "BTCUSDT",
       "time": "2026-11-22T03:15:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 60694.714530000005,
+      "quantity": 0.0001859612402790324,
+      "realized_pnl": 0.24537932472531843,
+      "reason": "trend_momentum_or_rsi_exit",
+      "reference_price": 60755.47,
+      "side": "SELL",
+      "strategy": "mean_reversion",
+      "symbol": "BTCUSDT",
+      "time": "2026-11-22T18:40:00+00:00"
     }
   ]
 }
