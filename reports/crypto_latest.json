@@ -1,31 +1,27 @@
 {
-  "cash": 11.48205518,
+  "cash": 0.0,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -25.40254,
-  "equity": 11.48205518,
-  "last_processed_bar": "2026-11-26T09:30:00+00:00",
+  "drawdown_from_peak_pct": -25.4407,
+  "equity": 11.47618175,
+  "last_processed_bar": "2026-11-26T19:10:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 60801.59,
-    "ETHUSDT": 1700.84,
-    "SOLUSDT": 71.02
+    "BTCUSDT": 60540.0,
+    "ETHUSDT": 1701.8,
+    "SOLUSDT": 71.35
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": -3.51794482,
-  "position": null,
+  "pnl_usdt": -3.52381825,
+  "position": {
+    "entry_price": 1702.67097,
+    "entry_time": "2026-11-26T19:10:00+00:00",
+    "quantity": 0.006743554910801662,
+    "strategy": "trend",
+    "symbol": "ETHUSDT"
+  },
   "recent_trades": [
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 70.91084,
-      "quantity": 0.15715253242230276,
-      "reference_price": 70.84,
-      "side": "BUY",
-      "strategy": "trend",
-      "symbol": "SOLUSDT",
-      "time": "2026-11-21T18:05:00+00:00"
-    },
     {
       "cost_bps_per_side": 10.0,
       "fill_price": 70.25967,
@@ -125,9 +121,19 @@
       "strategy": "trend",
       "symbol": "SOLUSDT",
       "time": "2026-11-26T09:30:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 1702.67097,
+      "quantity": 0.006743554910801662,
+      "reference_price": 1700.97,
+      "side": "BUY",
+      "strategy": "trend",
+      "symbol": "ETHUSDT",
+      "time": "2026-11-26T19:10:00+00:00"
     }
   ],
-  "return_pct": -23.45297,
+  "return_pct": -23.49212,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -135,6 +141,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 80,
-  "updated_at": "2026-11-26T09:36:07.615234+00:00"
+  "trade_count": 81,
+  "updated_at": "2026-11-26T19:16:37.696632+00:00"
 }
