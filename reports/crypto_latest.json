@@ -1,39 +1,21 @@
 {
-  "cash": 0.0,
+  "cash": 11.73343537,
   "cost_bps_per_side": 10.0,
   "data_errors": {},
-  "drawdown_from_peak_pct": -25.02356,
-  "equity": 11.54038787,
-  "last_processed_bar": "2026-11-27T02:10:00+00:00",
+  "drawdown_from_peak_pct": -23.76936,
+  "equity": 11.73343537,
+  "last_processed_bar": "2026-11-27T10:55:00+00:00",
   "marks_usdt": {
-    "BTCUSDT": 61267.16,
-    "ETHUSDT": 1715.85,
-    "SOLUSDT": 72.13
+    "BTCUSDT": 61666.22,
+    "ETHUSDT": 1729.99,
+    "SOLUSDT": 73.39
   },
   "mode": "paper_only",
   "note": "Public market data and simulated fills only. No exchange credentials or real orders.",
   "peak_equity": 15.39201938,
-  "pnl_usdt": -3.45961213,
-  "position": {
-    "entry_price": 72.54247,
-    "entry_time": "2026-11-27T02:10:00+00:00",
-    "quantity": 0.15999428621977516,
-    "strategy": "trend",
-    "symbol": "SOLUSDT"
-  },
+  "pnl_usdt": -3.26656463,
+  "position": null,
   "recent_trades": [
-    {
-      "cost_bps_per_side": 10.0,
-      "fill_price": 60694.714530000005,
-      "quantity": 0.0001859612402790324,
-      "realized_pnl": 0.24537932472531843,
-      "reason": "trend_momentum_or_rsi_exit",
-      "reference_price": 60755.47,
-      "side": "SELL",
-      "strategy": "mean_reversion",
-      "symbol": "BTCUSDT",
-      "time": "2026-11-22T18:40:00+00:00"
-    },
     {
       "cost_bps_per_side": 10.0,
       "fill_price": 72.17209999999999,
@@ -131,9 +113,21 @@
       "strategy": "trend",
       "symbol": "SOLUSDT",
       "time": "2026-11-27T02:10:00+00:00"
+    },
+    {
+      "cost_bps_per_side": 10.0,
+      "fill_price": 73.33659,
+      "quantity": 0.15999428621977516,
+      "realized_pnl": 0.12705466257284925,
+      "reason": "trend_momentum_or_rsi_exit",
+      "reference_price": 73.41,
+      "side": "SELL",
+      "strategy": "trend",
+      "symbol": "SOLUSDT",
+      "time": "2026-11-27T10:55:00+00:00"
     }
   ],
-  "return_pct": -23.06408,
+  "return_pct": -21.7771,
   "starting_cash": 15.0,
   "status": "updated",
   "symbols": [
@@ -141,6 +135,6 @@
     "ETHUSDT",
     "SOLUSDT"
   ],
-  "trade_count": 83,
-  "updated_at": "2026-11-27T02:18:14.596067+00:00"
+  "trade_count": 84,
+  "updated_at": "2026-11-27T11:01:52.504507+00:00"
 }
